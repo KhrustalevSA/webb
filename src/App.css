@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.homePage {
+  background-color: aqua;
+  height: 1000px;
+}
+
+.userPage {
+  background-color: aqua;
+  height: 1000px;
+}
+
+.aboutPage {
+  background-color: aqua;
+  height: 1000px;
+}
