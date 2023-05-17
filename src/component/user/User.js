@@ -12,7 +12,7 @@ class User extends Component {
 
     render() {
         return (
-            <div className="user" >
+            <div className="user">
                 <h3>{this.user.name} {this.user.surname} {this.user.patronymic}</h3>
                 <p>{this.user.favoriteRecipeList}</p>
             </div>

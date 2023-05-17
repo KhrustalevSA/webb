@@ -10,14 +10,15 @@ class UsersPage extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            users: []
+        };
+
         axios.get(baseUrl).then((response) => {
             console.log(response.data);
             this.setState({users: response.data.userList});
         })
 
-        this.state = {
-            users: []
-        };
         this.addUser = this.addUser.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
         this.editUser = this.editUser.bind(this);
@@ -25,7 +26,7 @@ class UsersPage extends Component {
 
     render() {
         return (
-            <div className="name">
+            <div className="userPage">
                 Список пользователей
                 <main>
                     <Users users={this.state.users}
