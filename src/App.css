@@ -18,3 +18,21 @@
   border-color: crimson;
   border-width: 3px;
 }
+
+.scale {
+  transition: 1s;
+  width: 100%;
+  height: 100%;
+}
+.scale:hover {
+  transform: scale(1.4);
+}
+
+.scaleCafe {
+  transition: 1s;
+  width: 100%;
+  height: 400px;
+}
+.scaleCafe:hover {
+  transform: scale(1.4);
+}

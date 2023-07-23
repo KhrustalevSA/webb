@@ -7,6 +7,10 @@ const baseUrl = "http://localhost:8080/room/getAll";
 const homePageStyles = {
     height: "auto",
     backgroundImage: `url(http://localhost:3000/images/background_image_Bel.jpg)`,
+    backgroundPosition: "left bottom",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
 }
 
 class HomePage extends Component {
@@ -19,7 +23,7 @@ class HomePage extends Component {
         };
 
         axios.post(baseUrl).then((response) => {
-            console.log(response.data);
+            console.log(response);
             this.setState({rooms: response.data.roomList});
         })
     }
@@ -33,6 +37,7 @@ class HomePage extends Component {
                         rooms={this.state.rooms}
                         userToken = {this.props.userToken}
                         userLogin = {this.props.userLogin}
+                        userRole = {this.props.userRole}
                     />
 
                 </main>

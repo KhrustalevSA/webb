@@ -63,21 +63,10 @@ const RegistrationForm = (props) => {
                     } catch (e) {
                         console.log('Sending error', e)
                     }
-
                     successfulReserveRoom();
-                    await delay(3000);
-
-                    window.location.assign('http://localhost:3000/');
-
                 }
-
                 if(!data.status.success) {
-
                     falseReserveRoom();
-                    await delay(3000);
-
-                    window.location.assign('http://localhost:3000/registration');
-
                 }
 
             });
@@ -111,10 +100,6 @@ const RegistrationForm = (props) => {
             theme: "light",
         });
     }
-
-    const delay = ms => new Promise(
-        resolve => setTimeout(resolve, ms)
-    );
 
     return(
         <div className="form">
@@ -156,11 +141,13 @@ const RegistrationForm = (props) => {
                     <input className="form__input" type="password" id="confirmPassword" placeholder="DiFFicult$.Password4" value={repeatPasswordInputValue} onChange={e => setRepeatPasswordInputValue(e.target.value)}/>
                 </div>
             </div>
-            <Button
-                variant="outline-info"
-                style={buttonStyle}
-                onClick={() => registration()}
-            >Регистрация</Button>
+            <Link to="/home">
+                <Button
+                    variant="outline-info"
+                    style={buttonStyle}
+                    onClick={() => registration()}
+                >Регистрация</Button>
+            </Link>
 
         </div>
     )

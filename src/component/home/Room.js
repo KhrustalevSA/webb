@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ImageSlider from "../image/ImageSlider";
-import backgroundImage from "../../resources/background_image.jpg"
 import {Button} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
@@ -147,12 +146,13 @@ class Room extends Component {
         });
     }
 
-
-
-
     room = this.props.room;
 
     render() {
+
+        const payMultiply = 15;
+        const hotelPriceCost = 2500;
+
         return (
             <div>
                 <div style={blockStyles}>
@@ -167,6 +167,17 @@ class Room extends Component {
                             Номер комнаты: {this.room.roomNumber}
                             <br/>
                             <b>Заселение и выселение проводится с 12:00 до 14:00 в день приезда/отъезда</b>
+                            {
+                                this.room.comfort != null ?
+                                    this.state.departureDate !== "0001-00-00" && this.state.arrivalDate !== "0001-00-00" ?
+                                        <h3>Цена за выбранные даты: {hotelPriceCost + (this.room.comfort * payMultiply ) *
+                                            new Date(new Date(this.state.departureDate).getTime() - new Date(this.state.arrivalDate).getTime()).getDate()}</h3> :
+                                        <h3>Цена за один день: {hotelPriceCost + (this.room.comfort * payMultiply)}</h3> :
+                                    this.state.departureDate !== "0001-00-00" && this.state.arrivalDate !== "0001-00-00" ?
+                                        <h3>Цена за выбранные даты: {hotelPriceCost + (50 * payMultiply + 2500) *
+                                            new Date(new Date(this.state.departureDate).getTime() - new Date(this.state.arrivalDate).getTime()).getDate()}</h3> :
+                                        <h3>Цена за один день: {hotelPriceCost + (50 * payMultiply + 2500)}</h3>
+                            }
                         </div>
                     </div>
                     <div style={containerImageStyles}>
@@ -246,7 +257,7 @@ const blockStyles = {
     margin: "10px 10%",
     display: "table",
     backgroundColor: "#fff",
-    backgroundImage: {backgroundImage}
+    borderRadius: "15px",
 };
 
 
